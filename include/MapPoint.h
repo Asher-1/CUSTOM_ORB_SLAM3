@@ -122,13 +122,13 @@ public:
     std::map<KeyFrame*,std::tuple<int,int>> GetObservations();
     int Observations();
 
-    void AddObservation(KeyFrame* pKF,int idx);
-    void EraseObservation(KeyFrame* pKF);
+    void AddObservation(KeyFrame* pKF, int idx);
+    void EraseObservation(KeyFrame* pKF, bool erase = true);
 
     std::tuple<int,int> GetIndexInKeyFrame(KeyFrame* pKF);
     bool IsInKeyFrame(KeyFrame* pKF);
 
-    void SetBadFlag();
+    void SetBadFlag(bool erase = true);
     bool isBad();
 
     void Replace(MapPoint* pMP);    

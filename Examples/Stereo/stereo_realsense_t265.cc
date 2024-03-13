@@ -160,6 +160,10 @@ int main(int argc, char **argv)
 
             // Pass the image to the SLAM system
             SLAM.TrackStereo(imLeft, imRight, timestamp);
+            if (SLAM.RefreshViewerWithCheckFinish()) {
+                SLAM.SetViewerFinish();
+                break;
+            }
 
 #ifdef REGISTER_TIMES
   #ifdef COMPILEDWITHC11

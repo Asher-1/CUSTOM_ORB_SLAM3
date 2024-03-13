@@ -138,6 +138,10 @@ int main(int argc, char **argv)
             // Pass the image to the SLAM system
             // cout << "tframe = " << tframe << endl;
             SLAM.TrackMonocular(im,tframe); // TODO change to monocular_inertial
+            if (SLAM.RefreshViewerWithCheckFinish()) {
+                SLAM.SetViewerFinish();
+                break;
+            }
 
     #ifdef COMPILEDWITHC11
             std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();

@@ -107,6 +107,9 @@ void ImageGrabber::GrabRGBD(const sensor_msgs::ImageConstPtr& msgRGB,const senso
         return;
     }
     mpSLAM->TrackRGBD(cv_ptrRGB->image,cv_ptrD->image,cv_ptrRGB->header.stamp.toSec());
+    // if (mpSLAM->RefreshViewerWithCheckFinish()) {
+    //     mpSLAM->SetViewerFinish();
+    // }
 }
 
 

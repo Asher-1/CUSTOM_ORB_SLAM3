@@ -1,13 +1,20 @@
 # ORB-SLAM3
 
-### V1.1, June 22th, 2023
+### V3.0, March 13th, 2024
+### 超详细注释
+
+![DEMO](./demo.gif)
+
+独家视频课程《VIO灭霸：ORB-SLAM3公式推导+源码逐行解析+算法改进》！ [网盘链接，提取码: y4h7 ](https://pan.baidu.com/s/18R9zt7FCFy3YmG7NBSMiwQ?pwd=y4h7)
+
+
+### V2.0, June 22th, 2023
 #### Note: deprecated due to coredump when running on macos
-  1. The first is to call SLAM.CreatePanelToViewer(); 
-  2. the last is to call follows in loop:
+  The solution is to call follows in loop:
   ```
   if (SLAM.RefreshViewerWithCheckFinish()) {
-        SLAM.SetViewerFinish();
-        break;
+      SLAM.SetViewerFinish();
+      break;
   }
   ```
 

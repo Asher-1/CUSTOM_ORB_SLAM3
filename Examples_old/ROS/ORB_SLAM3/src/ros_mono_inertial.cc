@@ -176,6 +176,10 @@ void ImageGrabber::SyncWithImu()
         mClahe->apply(im,im);
 
       mpSLAM->TrackMonocular(im,tIm,vImuMeas);
+      if (mpSLAM->RefreshViewerWithCheckFinish()) {
+          mpSLAM->SetViewerFinish();
+          break;
+      }
     }
 
     std::chrono::milliseconds tSleep(1);

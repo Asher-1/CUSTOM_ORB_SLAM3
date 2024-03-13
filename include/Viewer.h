@@ -48,7 +48,7 @@ public:
     // Main thread function. Draw points, keyframes, the current camera pose and the last processed
     // frame. Drawing is refreshed according to the camera fps. We use Pangolin.
     // Note: deprecated due to coredump when running on macos
-    // Now: first call SLAM.CreatePanelToViewer(); the last call follows in loop:
+    // Now: first call  the last call follows in loop:
     /*
         if (SLAM.RefreshViewerWithCheckFinish()) {
               SLAM.SetViewerFinish();

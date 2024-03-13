@@ -443,6 +443,10 @@ int main(int argc, char **argv) {
 #endif
         // Pass the image to the SLAM system
         SLAM.TrackRGBD(im, depth, timestamp, vImuMeas);
+        if (SLAM.RefreshViewerWithCheckFinish()) {
+            SLAM.SetViewerFinish();
+            break;
+        }
 
 #ifdef REGISTER_TIMES
     #ifdef COMPILEDWITHC11

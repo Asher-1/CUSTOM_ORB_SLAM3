@@ -150,6 +150,10 @@ int main(int argc, char **argv)
 
             // Pass the image to the SLAM system
             SLAM.TrackMonocular(imCV, timestamp_ms);
+            if (SLAM.RefreshViewerWithCheckFinish()) {
+                SLAM.SetViewerFinish();
+                break;
+            }
 
 #ifdef REGISTER_TIMES
   #ifdef COMPILEDWITHC11

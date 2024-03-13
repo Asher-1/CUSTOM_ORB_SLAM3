@@ -268,6 +268,10 @@ void ImageGrabber::SyncWithImu()
       }
 
       mpSLAM->TrackStereo(imLeft,imRight,tImLeft,vImuMeas);
+      if (mpSLAM->RefreshViewerWithCheckFinish()) {
+          mpSLAM->SetViewerFinish();
+          break;
+      }
 
       std::chrono::milliseconds tSleep(1);
       std::this_thread::sleep_for(tSleep);

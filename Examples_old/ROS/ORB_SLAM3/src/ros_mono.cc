@@ -89,6 +89,10 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
     }
 
     mpSLAM->TrackMonocular(cv_ptr->image,cv_ptr->header.stamp.toSec());
+    if (mpSLAM->RefreshViewerWithCheckFinish()) {
+        mpSLAM->SetViewerFinish();
+        break;
+    }
 }
 
 
