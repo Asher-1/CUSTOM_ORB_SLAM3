@@ -164,12 +164,6 @@ void ImageGrabber::GrabStereo(const sensor_msgs::ImageConstPtr& msgLeft,const se
     {
         mpSLAM->TrackStereo(cv_ptrLeft->image,cv_ptrRight->image,cv_ptrLeft->header.stamp.toSec());
     }
-    
-    if (mpSLAM->RefreshViewerWithCheckFinish()) {
-        mpSLAM->SetViewerFinish();
-        break;
-    }
-
 }
 
 

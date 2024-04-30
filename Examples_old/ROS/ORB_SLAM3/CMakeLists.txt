@@ -40,6 +40,13 @@ endif()
 
 find_package(Eigen3 3.1.0 REQUIRED)
 find_package(Pangolin REQUIRED)
+find_package(Boost REQUIRED COMPONENTS
+             program_options
+             filesystem
+             graph
+             system
+             serialization
+             unit_test_framework)
 
 include_directories(
 ${PROJECT_SOURCE_DIR}
@@ -47,17 +54,25 @@ ${PROJECT_SOURCE_DIR}/../../../
 ${PROJECT_SOURCE_DIR}/../../../include
 ${PROJECT_SOURCE_DIR}/../../../include/CameraModels
 ${Pangolin_INCLUDE_DIRS}
+${Boost_INCLUDE_DIRS}
+${PROJECT_SOURCE_DIR}/../../../Thirdparty/Sophus
 )
+
 
 set(LIBS 
 ${OpenCV_LIBS} 
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
+${Boost_FILESYSTEM_LIBRARY}
+${Boost_PROGRAM_OPTIONS_LIBRARY}
+${Boost_SYSTEM_LIBRARY}
+${Boost_LIBRARIES}
 ${PROJECT_SOURCE_DIR}/../../../Thirdparty/DBoW2/lib/libDBoW2.so
 ${PROJECT_SOURCE_DIR}/../../../Thirdparty/g2o/lib/libg2o.so
 ${PROJECT_SOURCE_DIR}/../../../lib/libORB_SLAM3.so
--lboost_system
 )
+
+link_directories(${Boost_LIBRARY_DIRS})
 
 # Node for monocular camera
 rosbuild_add_executable(Mono

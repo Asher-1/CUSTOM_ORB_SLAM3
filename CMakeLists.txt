@@ -45,15 +45,21 @@ find_package(Boost REQUIRED COMPONENTS
              unit_test_framework)
 
 
-set(OpenCV_MIN_VERSION "4.2.0")
-find_package(OpenCV ${OpenCV_MIN_VERSION} REQUIRED)
+# set(OpenCV_MIN_VERSION "4.2.0")
+# find_package(OpenCV ${OpenCV_MIN_VERSION} REQUIRED)
 # find_package(OpenCV REQUIRED)
+# if(NOT OpenCV_FOUND)
+#         message(FATAL_ERROR "OpenCV > 4.2 not found.")
+# endif()
+find_package(OpenCV 4 QUIET)
 if(NOT OpenCV_FOUND)
-        message(FATAL_ERROR "OpenCV > 4.2 not found.")
+   find_package(OpenCV 3.0 QUIET)
+   if(NOT OpenCV_FOUND)
+      message(FATAL_ERROR "OpenCV > 3.0 not found.")
+   endif()
 endif()
 
-MESSAGE("OPENCV VERSION:")
-MESSAGE(${OpenCV_VERSION})
+MESSAGE("OPENCV VERSION:" ${OpenCV_VERSION})
 
 find_package(OpenMP QUIET)
 find_package(Eigen3 3.1.0 REQUIRED)
@@ -135,9 +141,7 @@ include/Settings.h)
 
 add_subdirectory(Thirdparty/g2o)
 
-set(COLMAP_LINK_DIRS
-    ${Boost_LIBRARY_DIRS}
-)
+link_directories(${Boost_LIBRARY_DIRS})
 
 target_link_libraries(${PROJECT_NAME}
 ${OpenCV_LIBS}

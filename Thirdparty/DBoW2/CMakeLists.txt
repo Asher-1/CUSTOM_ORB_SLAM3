@@ -53,11 +53,8 @@ endif()
 
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-set(COLMAP_LINK_DIRS
-    ${Boost_LIBRARY_DIRS}
-)
-
 include_directories(${OpenCV_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 add_library(DBoW2 SHARED ${SRCS_DBOW2} ${SRCS_DUTILS})
+link_directories(${Boost_LIBRARY_DIRS})
 target_link_libraries(DBoW2 ${OpenCV_LIBS} ${Boost_FILESYSTEM_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
